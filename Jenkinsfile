@@ -30,12 +30,14 @@ pipeline {
     post {
         success {
             mail to: 'shawn.oplinger@noaa.gov',
-                 subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
+                 from: 'jenkins.builds.nmfs.cio@noaa.gov',
+		 subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
                  body: "Success for build: ${env.BUILD_URL}"
         }
         failure {
             mail to: 'shawn.oplinger@noaa.gov',
-                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 from: 'jenkins.builds.nmfs.cio@noaa.gov',
+		 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                  body: "Something is wrong with ${env.BUILD_URL}"
         }
     }
